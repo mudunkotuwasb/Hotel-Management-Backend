@@ -23,71 +23,69 @@ export function buildSwaggerSpec() {
       paths: {
         '/health': { get: { summary: 'Health', responses: { '200': { description: 'ok' } } } },
         '/rooms': {
-          get: { tags: ['Rooms'], responses: { '501': { description: 'Not implemented' } } },
-          post: { tags: ['Rooms'], security: [{ bearerAuth: [] }], responses: { '501': { description: 'Not implemented' } } }
+          get: { tags: ['Rooms'], summary: 'List rooms' },
+          post: { tags: ['Rooms'], summary: 'Create room' }
         },
         '/rooms/{id}': {
-          get: { tags: ['Rooms'], parameters: [{ name: 'id', in: 'path', required: true }], responses: { '501': { description: 'Not implemented' } } }
+          get: { tags: ['Rooms'], summary: 'Get room', parameters: [{ name: 'id', in: 'path', required: true }] }
         },
         '/rooms/{id}/status': {
-          patch: { tags: ['Rooms'], parameters: [{ name: 'id', in: 'path', required: true }], responses: { '501': { description: 'Not implemented' } } }
+          patch: { tags: ['Rooms'], summary: 'Update room status', parameters: [{ name: 'id', in: 'path', required: true }] }
         },
         '/bookings': {
-          get: { tags: ['Bookings'], responses: { '501': { description: 'Not implemented' } } },
-          post: { tags: ['Bookings'], responses: { '501': { description: 'Not implemented' } } }
+          get: { tags: ['Bookings'], summary: 'List bookings (scoped)' },
+          post: { tags: ['Bookings'], summary: 'Create booking' }
         },
         '/bookings/{id}/checkin': {
-          post: { tags: ['Bookings'], parameters: [{ name: 'id', in: 'path', required: true }], responses: { '501': { description: 'Not implemented' } } }
+          post: { tags: ['Bookings'], summary: 'Check-in', parameters: [{ name: 'id', in: 'path', required: true }] }
         },
         '/bookings/{id}/checkout': {
-          post: { tags: ['Bookings'], parameters: [{ name: 'id', in: 'path', required: true }], responses: { '501': { description: 'Not implemented' } } }
-        },
-        '/bookings/webhooks/ota': {
-          post: { tags: ['Bookings'], responses: { '501': { description: 'Not implemented' } } }
+          post: { tags: ['Bookings'], summary: 'Check-out', parameters: [{ name: 'id', in: 'path', required: true }] }
         },
         '/menu': {
-          get: { tags: ['Dining'], responses: { '501': { description: 'Not implemented' } } },
-          post: { tags: ['Dining'], responses: { '501': { description: 'Not implemented' } } }
+          get: { tags: ['Dining'], summary: 'List menu items' },
+          post: { tags: ['Dining'], summary: 'Create menu item' }
         },
         '/orders': {
-          post: { tags: ['Dining'], responses: { '501': { description: 'Not implemented' } } }
+          post: { tags: ['Dining'], summary: 'Place order' }
         },
         '/orders/{id}/status': {
-          patch: { tags: ['Dining'], parameters: [{ name: 'id', in: 'path', required: true }], responses: { '501': { description: 'Not implemented' } } }
-        },
-        '/inventory': {
-          get: { tags: ['Inventory'], responses: { '501': { description: 'Not implemented' } } },
-          post: { tags: ['Inventory'], responses: { '501': { description: 'Not implemented' } } }
-        },
-        '/inventory/{id}/adjust': {
-          patch: { tags: ['Inventory'], parameters: [{ name: 'id', in: 'path', required: true }], responses: { '501': { description: 'Not implemented' } } }
-        },
-        '/inventory/alerts': {
-          get: { tags: ['Inventory'], responses: { '501': { description: 'Not implemented' } } }
+          patch: { tags: ['Dining'], summary: 'Update order status', parameters: [{ name: 'id', in: 'path', required: true }] }
         },
         '/trips': {
-          get: { tags: ['Trips'], responses: { '501': { description: 'Not implemented' } } },
-          post: { tags: ['Trips'], responses: { '501': { description: 'Not implemented' } } }
+          get: { tags: ['Trips'], summary: 'List public trips' },
+          post: { tags: ['Trips'], summary: 'Create trip package' }
         },
         '/trips/{id}/attach': {
-          post: { tags: ['Trips'], parameters: [{ name: 'id', in: 'path', required: true }], responses: { '501': { description: 'Not implemented' } } }
+          post: { tags: ['Trips'], summary: 'Attach trip to booking', parameters: [{ name: 'id', in: 'path', required: true }] }
         },
         '/trips/requests': {
-          post: { tags: ['Trips'], responses: { '501': { description: 'Not implemented' } } }
+          post: { tags: ['Trips'], summary: 'Create trip request' }
         },
         '/invoices/{bookingId}': {
-          get: { tags: ['Invoices'], parameters: [{ name: 'bookingId', in: 'path', required: true }], responses: { '501': { description: 'Not implemented' } } }
+          get: { tags: ['Invoices'], summary: 'Get or preview invoice', parameters: [{ name: 'bookingId', in: 'path', required: true }] }
         },
         '/invoices/{bookingId}/generate': {
-          post: { tags: ['Invoices'], parameters: [{ name: 'bookingId', in: 'path', required: true }], responses: { '501': { description: 'Not implemented' } } }
+          post: { tags: ['Invoices'], summary: 'Generate invoice', parameters: [{ name: 'bookingId', in: 'path', required: true }] }
         },
-        '/reports/occupancy': { get: { tags: ['Reports'], responses: { '501': { description: 'Not implemented' } } } },
-        '/reports/sales': { get: { tags: ['Reports'], responses: { '501': { description: 'Not implemented' } } } },
-        '/reports/inventory-usage': { get: { tags: ['Reports'], responses: { '501': { description: 'Not implemented' } } } }
+        '/inventory': {
+          get: { tags: ['Inventory'], summary: 'List inventory items' },
+          post: { tags: ['Inventory'], summary: 'Create inventory item' }
+        },
+        '/inventory/{id}/adjust': {
+          patch: { tags: ['Inventory'], summary: 'Adjust inventory quantity', parameters: [{ name: 'id', in: 'path', required: true }] }
+        },
+        '/inventory/alerts': {
+          get: { tags: ['Inventory'], summary: 'Low stock alerts' }
+        },
+        '/me': { get: { tags: ['Users'], summary: 'Get current profile' }, put: { tags: ['Users'], summary: 'Update current profile' } }
       }
     },
     apis: [],
   });
 }
+
+
+
 
 

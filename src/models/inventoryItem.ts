@@ -20,3 +20,7 @@ const InventoryItemSchema = new Schema<IInventoryItem>(
 export const InventoryItem: Model<IInventoryItem> = mongoose.model<IInventoryItem>('InventoryItem', InventoryItemSchema);
 
 
+
+
+
+

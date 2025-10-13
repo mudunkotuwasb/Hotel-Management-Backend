@@ -24,3 +24,7 @@ const TripPackageSchema = new Schema<ITripPackage>(
 export const TripPackage: Model<ITripPackage> = mongoose.model<ITripPackage>('TripPackage', TripPackageSchema);
 
 
+
+
+
+

@@ -7,6 +7,7 @@ import { inventoryRouter } from './inventory.js';
 import { tripsRouter } from './trips.js';
 import { invoicesRouter } from './invoices.js';
 import { reportsRouter } from './reports.js';
+import { userRouter } from './user.js';
 
 export function registerRoutes(app: Express): void {
   app.get('/health', (_req: Request, res: Response) => {
@@ -21,6 +22,7 @@ export function registerRoutes(app: Express): void {
   app.use('/trips', tripsRouter);
   app.use('/invoices', invoicesRouter);
   app.use('/reports', reportsRouter);
+  app.use('/me', userRouter);
 }
 
 
